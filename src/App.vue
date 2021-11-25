@@ -1,15 +1,15 @@
 <template>
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Futuras Mães Legais" />
+    <NavBar />
+    <router-view></router-view>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import NavBar from "./components/NavBar.vue"
 
 export default {
     name: "App",
     components: {
-        HelloWorld,
+        NavBar,
     },
 };
 </script>
@@ -20,7 +20,16 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+
+    --cinza-edson: #999999;
+    --deep-edson: #555555;
+}
+
+.centerContainer {
+    margin: auto;
+    width: 95%;
+    padding: 10px;
+    padding-top: 0rem;
+    text-align: center;
 }
 </style>
