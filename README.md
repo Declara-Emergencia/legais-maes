@@ -1,5 +1,10 @@
 # legais-maes
 
+## Deploy realizado em
+```
+https://maes-legais.web.app/
+```
+
 ## Project setup
 ```
 npm install
