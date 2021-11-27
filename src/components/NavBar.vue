@@ -3,14 +3,48 @@
         <span><strong>Mães Legais</strong></span><br>
         <span>de mãe pra mãe etc</span>
 
-        <button><router-link :to="{ path: '/' }">Home</router-link></button>
-        <button><router-link :to="{ path: '/register' }">Register</router-link></button>
+        <router-link :to="{ name: 'HomePage' }" id="navBarButton">Home</router-link>
+        <router-link v-if="!loggedIn" :to="{ name: 'LoginForm' }" id="navBarButton">Login</router-link>
+        <router-link v-if="loggedIn" :to="{ name: 'ServiceList' }" id="navBarButton">Service List</router-link>
+
+        <button v-if="loggedIn" v-on:click="signOut()" id="navBarButton">Sair</button>
     </div>
 </template>
 
 <script>
+import firebase from 'firebase/app'
+import "firebase/auth"
+
 export default {
     name: "NavBar",
+    data() {
+        return {
+            loggedIn: false
+        }
+    },
+    methods: {
+        async signOut(){
+            try {
+                const data = firebase.auth().signOut();
+                console.log(data);
+                this.$router.replace({name: 'LoginForm'});
+            }
+            catch(err) {
+                console.log(err)
+            }
+            
+        }
+    },
+    created() {
+        firebase.auth().onAuthStateChanged(user => {
+            if(user){
+                this.loggedIn = true;
+            }
+            else{
+                this.loggedIn = false;
+            }
+        })
+    }
 };
 </script>
 
@@ -38,7 +72,7 @@ export default {
     position: relative;
 }
 
-button {
+#navBarButton {
     margin-left: 2rem;
 }
 </style>

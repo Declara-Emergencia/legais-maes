@@ -22,6 +22,7 @@ export default {
     text-align: center;
 
     --cinza-edson: #999999;
+    --copycat-edson: #999999;
     --deep-edson: #555555;
 }
 

@@ -1,5 +1,5 @@
 <template>
-    <h1>Registrar</h1>
+    <h1>Entrar</h1>
     <div>
         <div v-if="error">{{error.message}}</div><br>
         <input type="text" v-model="email" name="Username" placeholder="Digite seu usuário">
@@ -8,9 +8,7 @@
         <br>
         <button v-on:click="onSubmit()">Enviar</button>
         <br>
-        <!--<form @submit.prevent="onSubmit">
-            Registrar
-        </form>-->
+        <router-link :to="{ name: 'RegisterForm' }">Não possui conta?</router-link>
     </div>
 </template>
 
@@ -19,7 +17,7 @@ import firebase from 'firebase/app'
 import "firebase/auth"
 
 export default {
-    name: "RegisterForm",
+    name: "LoginForm",
     data(){
         return {
             email: '',
@@ -30,7 +28,7 @@ export default {
     methods: {
         async onSubmit() {
             try{
-                const user = await firebase.auth().createUserWithEmailAndPassword(this.email, this.password);
+                const user = await firebase.auth().signInWithEmailAndPassword(this.email, this.password);
                 console.log(user);
                 this.$router.replace({name: 'ServiceList'});
             }
