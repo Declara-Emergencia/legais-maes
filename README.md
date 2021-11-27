@@ -1,9 +1,8 @@
 # legais-maes
 
 ## Deploy realizado em
-```
-https://maes-legais.web.app/
-```
+
+See [Mães Legais Firebase Hosting](https://maes-legais.web.app/).
 
 ## Project setup
 ```
