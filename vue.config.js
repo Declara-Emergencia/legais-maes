@@ -4,7 +4,7 @@
  * @type {import('@vue/cli-service').ProjectOptions}
  */
 module.exports = {
-    publicPath: "/maes-legais/",
+    //publicPath: "/maes-legais/",
     devServer: {
         proxy: {
             '/api': {
