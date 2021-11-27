@@ -30,10 +30,24 @@ export default {
             try{
                 const user = await firebase.auth().signInWithEmailAndPassword(this.email, this.password);
                 console.log(user);
+                
+                this.$notify({
+                    title: "Acesso Realizado",
+                    text: "Seja Bem-Vindo(a)",
+                    type: "success"
+                });
+                
                 this.$router.replace({name: 'ServiceList'});
             }
             catch(err){
-                console.log(err);
+                //console.log(err);
+                
+                this.$notify({
+                    title: "Credenciais inválidas",
+                    //text: err.message,
+                    text: "Verifique as informações inseridas e tente novamente",
+                    type: "error"
+                });
             }
         },
     }

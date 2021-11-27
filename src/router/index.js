@@ -13,9 +13,9 @@ export default createRouter({
     history: createWebHashHistory(),
     routes: [
         { path: '/', name: "HomePage", component: HomePage },
-        { path: '/register', name: "RegisterForm", component: RegisterForm },
-        { path: '/login', name: "LoginForm", component: LoginForm },
-        { path: '/service-list', name: "ServiceList", component: ServiceList, meta: {requiresAuth: true}}
+        { path: '/registrar', name: "RegisterForm", component: RegisterForm },
+        { path: '/entrar', name: "LoginForm", component: LoginForm },
+        { path: '/lista-servicos', name: "ServiceList", component: ServiceList, meta: {requiresAuth: true}}
     ],
 });
 /*

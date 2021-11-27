@@ -3,9 +3,9 @@
         <span><strong>Mães Legais</strong></span><br>
         <span>de mãe pra mãe etc</span>
 
-        <router-link :to="{ name: 'HomePage' }" id="navBarButton">Home</router-link>
-        <router-link v-if="!loggedIn" :to="{ name: 'LoginForm' }" id="navBarButton">Login</router-link>
-        <router-link v-if="loggedIn" :to="{ name: 'ServiceList' }" id="navBarButton">Service List</router-link>
+        <router-link :to="{ name: 'HomePage' }" id="navBarButton">Página Inicial</router-link>
+        <router-link v-if="!loggedIn" :to="{ name: 'LoginForm' }" id="navBarButton">Entrar</router-link>
+        <router-link v-if="loggedIn" :to="{ name: 'ServiceList' }" id="navBarButton">Lista de Serviços</router-link>
 
         <button v-if="loggedIn" v-on:click="signOut()" id="navBarButton">Sair</button>
     </div>

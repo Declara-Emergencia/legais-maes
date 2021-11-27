@@ -1,6 +1,6 @@
 <template>
     <div class="centerContainer">
-        <h1>Home Page</h1>
+        <h1>Página Inicial</h1>
     </div>
 </template>
 

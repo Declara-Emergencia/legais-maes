@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Lista de Serviços</h1>
-        <span>vai ter um routeGuard aqui no futuro</span>
+        <span>Em breve</span>
     </div>
 </template>
 

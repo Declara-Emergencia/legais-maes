@@ -2,9 +2,9 @@
     <h1>Registrar</h1>
     <div>
         <div v-if="error">{{error.message}}</div><br>
-        <input type="text" v-model="email" name="Username" placeholder="Digite seu usuário">
+        <input type="email" v-model="email" name="Username" required placeholder="Digite seu usuário">
         <br>
-        <input type="password" v-model="password" name="Password" placeholder="Digite sua senha">
+        <input type="password" v-model="password" name="Password" required placeholder="Digite sua senha">
         <br>
         <button v-on:click="onSubmit()">Enviar</button>
         <br>
@@ -31,11 +31,24 @@ export default {
         async onSubmit() {
             try{
                 const user = await firebase.auth().createUserWithEmailAndPassword(this.email, this.password);
-                console.log(user);
+                
+                this.$notify({
+                    title: "Cadastro Realizado",
+                    text: "Seja Bem-Vindo(a)",
+                    type: "success"
+                });
+
                 this.$router.replace({name: 'ServiceList'});
             }
             catch(err){
-                console.log(err);
+                //console.log(err);
+
+                this.$notify({
+                    title: "Credenciais inválidas",
+                    //text: err.message,
+                    text: "Verifique as informações inseridas e tente novamente",
+                    type: "error"
+                });
             }
         },
     }

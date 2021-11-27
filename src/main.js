@@ -5,6 +5,7 @@ import router from './router';
 import store from './store';
 //import axios from 'axios';
 import firebase from "firebase/app"
+import Notifications from '@kyvg/vue3-notification'
 
 const firebaseConfig = {
     apiKey: "AIzaSyDzzI4auMWpriTY3IW9OUIpcl8yZIrI3sE",
@@ -19,9 +20,8 @@ firebase.initializeApp(firebaseConfig);
 
 let app;
 firebase.auth().onAuthStateChanged(user =>{
-    console.log(user);
     if(!app) {
-        app = createApp(App).use(store).use(router).mount('#app')
+        app = createApp(App).use(store).use(router).use(Notifications).mount('#app')
     }
 })
 
