@@ -2,18 +2,16 @@
     <div class="centerContainer">
         <h1>Página Inicial</h1>
 
-        <button v-on:click="callApi()">API Get</button>
-        <p>Resultado Get: {{call}}</p>
+        <button v-on:click="getApi()">API Get</button>
+        <p>Resultado Get: {{recipes}}</p>
 
-        <!--<li v-for="c in call">
-            {{ c.message }}
-        </li>-->
         <hr>
+
         <input type="text" v-model="recipeName" name="recipeName" placeholder="Digite o nome da receita">
         <br>
-        <button v-on:click="onSubmit()">API Post</button>
+        <button v-on:click="postApi()">API Post</button>
         <br>
-        <p>Id receita recém criada: {{recipeId}}</p>
+        <p>Receita recém criada: {{returnedRecipe}}</p>
     </div>
 </template>
 
@@ -23,8 +21,9 @@ export default {
     name: "HomePage",
     data(){
         return {
-            call: '',
+            recipes: [],
             recipeName: '',
+            returnedRecipe: '',
             config: 
             {
                 headers: {
@@ -32,30 +31,21 @@ export default {
                     //'Access-Control-Allow-Origin': '*'
                     'Content-Type': 'application/json'
                 }
-            },
-            recipeId: ''
+            }
         }
     },
-    props: {
-        //msg: String,
-    },
     methods: {
-        async callApi(){
-            
-            const call = await axios.get('http://localhost:5000/Recipe/getRecipes/', this.config);
-            this.call = call.data.title;
+        async getApi(){
+            axios.get('https://localhost:44300/Recipe/getRecipes', this.config)
+                .then(response => this.recipes = response.data);
         },
-        async onSubmit(){
+        async postApi(){
             const recipe = {
                 recipeName: this.recipeName
             }
-            /*const recipe = {
-                "title": "autem hic labore sunt dolores incidunt",
-                "body": "meme"
-            }*/
 
-            axios.post("http://localhost:5000/Recipe/insertRecipe", recipe, this.config)
-                .then(response => this.recipeId = response.data.id);
+            axios.post("https://localhost:44300/Recipe/insertRecipe", recipe, this.config)
+                .then(response => this.returnedRecipe = response.data);
         }
     }
 };

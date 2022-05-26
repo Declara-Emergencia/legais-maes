@@ -1,6 +1,6 @@
 <template lang="pt-br">
     <div class="navbarContainer">
-        <span><strong>Mães Legais</strong></span><br>
+        <span><strong>Receitas Legais</strong></span><br>
         <span>de mãe pra mãe etc</span>
 
         <router-link :to="{ name: 'HomePage' }" id="navBarButton">Página Inicial</router-link>
